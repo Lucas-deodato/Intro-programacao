@@ -2,6 +2,7 @@ import json
 import os
 from time import sleep
 import reservas
+import restaurantes
 
 class Cor:
     VERMELHO = '\033[91m'
@@ -19,20 +20,31 @@ arquivo = os.path.join(os.path.dirname(__file__), 'reservas.json')
 def menu_inicial():
     print (Cor.CIANO + "=" *55 + Cor.RESET)
     print ("          1 - MENU DE RESERVAS")
-    print ("          2 - LISTAR RESTAURANTES")
+    print ("          2 - MENU DE RESTAURANTES")
     print ("          3 - SAIR ")
     print (Cor.CIANO + "=" *55 + Cor.RESET)
 
 
-def main_menu():
+def menu_reservas():
     print (Cor.CIANO + "=" *55 + Cor.RESET)
     print("\n[MENU DE RESERVAS]\n")
     print("1. FAZER RESERVA") 
     print("2. LISTAR RESERVAS")
     print("3. ALTERAR DATA/HORA DA RESERVA")
     print("4. CANCELAR RESERVA")
-    print("5. VERIFICAR INFORMAÇÕES DA SUA RESERVA")
+    print("5. VERIFICAR INFORMAÇÕES DA MINHA RESERVA")
     print("6. VOLTAR AO MENU ANTERIOR")
+    print (Cor.CIANO + "=" *55 + Cor.RESET)
+
+
+def menu_restaurantes():
+    print (Cor.CIANO + "=" *55 + Cor.RESET)
+    print("\n[MENU DE RESERVAS]\n")
+    print("1. ADICIONAR RESTAURANTE") 
+    print("2. LISTAR RESTAURANTES")
+    print("3. ALTERAR INFORMAÇÕES DO RESTAURANTE")
+    print("4. DELETAR RESTAURANTE")
+    print("5. VOLTAR AO MENU ANTERIOR")
     print (Cor.CIANO + "=" *55 + Cor.RESET)
 
 
@@ -44,10 +56,11 @@ def main():
         match (primeiro_menu):
             case 1:  
                 while True: 
-                    main_menu()
+                    menu_reservas()
                     opcao_main = input("ESCOLHA UMA OPÇÃO: ")
 
                     if opcao_main == "1":
+                        nome_restaurante = input("Qual o nome do restaurante? ")
                         nome = input("Qual o nome do responsável pela reserva? ")
                         cpf = int(input("Informe o seu CPF: "))
                         data = input("Qual a data da reserva? ")
@@ -55,7 +68,7 @@ def main():
                         horario = input("Digite o horário que você deseja: ")
                         mesa = int(input("Qual o número da mesa que você deseja? "))
 
-                        reservas.reservar(nome, cpf, data, qtd_pessoas, horario, mesa)
+                        reservas.reservar(nome_restaurante, nome, cpf, data, qtd_pessoas, horario, mesa)
                 
                     elif opcao_main == "2":
                         reservas.listar_reservas()
@@ -80,8 +93,45 @@ def main():
                         break
                     else:
                         print("😡 OPÇÃO INVÁLIDA. TENTE NOVAMENTE!")
+
             case 2:
-                print("LISTA DE RESTAURANTES")
+                while True: 
+                    menu_restaurantes()
+                    opcao_main = input("ESCOLHA UMA OPÇÃO: ")
+
+                    if opcao_main == "1":
+                        nome = input("Qual o nome do restaurante? ")
+                        informacoes = input("Digite informações sobre o tipo de cardápio do restaurante (Churrascaria, comida japonesa etc): ")
+                        endereco = input("Qual o endereço? ")
+                        funcionamento = input("Qual o horário de funcionamento? ")
+                        avaliacao = int(input("Digite a avaliação do restaurante (0-5): "))
+
+                        restaurantes.adicionar_restaurante(nome, endereco, informacoes, funcionamento, avaliacao)
+                
+                    elif opcao_main == "2":
+                        restaurantes.listar_restaurantes()
+
+                    elif opcao_main == "3":
+                        nome_atual = input('Digite o nome do restaurante que você deseja atualizar: ')
+                        print("Caso você não deseje atualizar um campo qualquer, por exemplo o nome, apenas repita o nome já existente, e assim sucessivamente.\n")
+
+                        novo_nome = input("Qual o novo nome do restaurante? ")
+                        novas_informacoes = input("Novas informações: ")
+                        novo_endereco = input("Qual o novo endereço? ")
+                        novo_funcionamento = input("Qual o novo horário de funcionamento? ")
+                        nova_avaliacao = int(input("Qual a nova avaliação do restaurante: "))
+                        restaurantes.atualizar_restaurantes(nome_atual, novo_nome, novas_informacoes, novo_endereco, novo_funcionamento, nova_avaliacao)
+
+                    elif opcao_main == "4":
+                        nome = input("Digite o nome do restaurante que será excluído do sistema:\n>>>")
+                        restaurantes.excluir_restaurante(nome)
+
+                    elif opcao_main == "5":
+                        print("VOLTAR AO MENU ANTERIOR...")
+                        sleep(3)
+                        break
+                    else:
+                        print("😡 OPÇÃO INVÁLIDA. TENTE NOVAMENTE!")               
 
             case 3:
                 print("🚀 SAINDO...")

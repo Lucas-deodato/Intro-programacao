@@ -1,15 +1,15 @@
 import json
 import os
-from time import sleep
 
 arquivo = os.path.join(os.path.dirname(__file__), 'reservas.json')
 
 #CREATE: CRIAR RESERVA
-def reservar(nome, cpf, data, qtd_pessoas, horario, mesa):
+def reservar(nome_restaurante, nome, cpf, data, qtd_pessoas, horario, mesa):
     with open(arquivo, 'r') as f:
         reserva = json.load(f)
 
     reserva.append({
+        "nome-restaurante": nome_restaurante,
         "nome": nome,
         "cpf": cpf,
         "data": data,
@@ -34,9 +34,8 @@ def listar_reservas():
         print("-" *50)
         for r in reservas:
             print("*" *35)
-            print(f"Horário: {r['horario']}\nMesa: {r['mesa']}")  # horário e mesa, apenas
+            print(f"Restaurante: {r['nome-restaurante']}\nHorário: {r['horario']}\nMesa: {r['mesa']}")
             print("*" *35)
-            print("=" *35)
     else:
         print("NENHUMA RESERVA EFETUADA AINDA, TODOS OS HORÁRIOS ESTÃO DISPONÍVEIS.")
 
