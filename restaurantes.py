@@ -32,7 +32,7 @@ def listar_restaurantes():
         print("-" *50)
         for r in restaurantes:
             print("*" *35)
-            print(f"Nome do restaurante: {r['nome']}\nInformações: {r['informacoes']}\nFuncionamento: {r['funcionamento']}\nAvaliação: {r['avaliacao']}")
+            print(f"Nome do restaurante: {r['nome']}\nInformações: {r['informacoes']}\nEndereço: {r['endereco']}\nFuncionamento: {r['funcionamento']}\nAvaliação: {r['avaliacao']}")
 
 
 def atualizar_restaurantes(nome_atual, novo_nome, novas_informacoes, novo_endereco, novo_funcionamento, nova_avaliacao):
