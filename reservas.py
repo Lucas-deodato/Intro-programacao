@@ -68,7 +68,7 @@ def listar_reservas():
         for r in reservas:
             print("*" * 35)
             print(
-                f"Restaurante: {r['nome-restaurante']}\nData: {r['data']}\nHorário: {r['horario']}\nMesa: {r['mesa']}"
+                f"Restaurante: {r['nome_restaurante']}\nHorário: {r['horario']}\nMesa: {r['mesa']}"
             )
             print("*" * 35)
     else:
