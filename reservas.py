@@ -27,7 +27,7 @@ def verifica_conflitos(reservas, nova_reserva):
 # CREATE: CRIAR RESERVA
 def reservar(nome_restaurante, nome, cpf, data, qtd_pessoas, horario, mesa):
     try:
-        with open(arquivo, "r") as f:
+        with open(arquivo, "r", encoding="utf8") as f:
             reservas = json.load(f)
 
         nova_reserva = {
@@ -47,7 +47,7 @@ def reservar(nome_restaurante, nome, cpf, data, qtd_pessoas, horario, mesa):
             )
         else:
             reservas.append(nova_reserva)
-            with open(arquivo, "w") as f:
+            with open(arquivo, "w", encoding="utf8") as f:
                 json.dump(reservas, f, indent=4)
             print("😎 RESERVA CONFIRMADA!")
     except FileNotFoundError:
@@ -58,7 +58,7 @@ def reservar(nome_restaurante, nome, cpf, data, qtd_pessoas, horario, mesa):
 
 # READ: LER TODAS AS RESERVAS
 def listar_reservas():
-    with open(arquivo, "r") as f:
+    with open(arquivo, "r", encoding="utf8") as f:
         reservas = json.load(f)
 
     if reservas:
@@ -77,7 +77,7 @@ def listar_reservas():
 
 # UPDATE: ATUALIZAR O HORÁRIO DA RESERVA
 def atualizar_reserva(cpf, nova_data, novo_horario):
-    with open(arquivo, "r") as f:
+    with open(arquivo, "r", encoding="utf8") as f:
         reservas = json.load(f)
 
     for r in reservas:
@@ -85,7 +85,7 @@ def atualizar_reserva(cpf, nova_data, novo_horario):
             r["horario"] = novo_horario
             r["data"] = nova_data
 
-            with open(arquivo, "w") as f:
+            with open(arquivo, "w", encoding="utf8") as f:
                 json.dump(reservas, f, indent=4)
 
             print("😙 HORÁRIO DA RESERVA ATUALIZADO COM SUCESSO!!")
@@ -96,14 +96,14 @@ def atualizar_reserva(cpf, nova_data, novo_horario):
 
 # DELETE: CANCELAR A RESERVA
 def cancelar_reserva(cpf):
-    with open(arquivo, "r") as f:
+    with open(arquivo, "r", encoding="utf8") as f:
         reservas = json.load(f)
 
     for r in reservas:
         if r["cpf"] == cpf:
             reservas.remove(r)
 
-            with open(arquivo, "w") as f:
+            with open(arquivo, "w", encoding="utf8") as f:
                 json.dump(reservas, f, indent=4)
 
             print("😡 RESERVA CANCELADA COM SUCESSO!")
@@ -114,7 +114,7 @@ def cancelar_reserva(cpf):
 
 # VERIFICAR APENAS A SUA RESERVA
 def verificar_reserva(cpf):
-    with open(arquivo, "r") as f:
+    with open(arquivo, "r", encoding="utf8") as f:
         reservas = json.load(f)
 
     for r in reservas:
