@@ -1,56 +1,38 @@
 [
     {
-        "nome-restaurante": "Boi e Brasa Churrascaria",
-        "nome": "Lucas Antonio",
-        "cpf": 0,
-        "data": "05/06/2024",
-        "pessoas": 8,
-        "horario": "17h - 20h",
-        "mesa": 8
-    },
-    {
-        "nome-restaurante": "afro",
-        "nome": "ana",
+        "nome_restaurante": "coco bambu",
+        "nome": "Ana Torchia",
         "cpf": 8758710469,
-        "data": "06/06/2024",
+        "data": "09:00",
         "pessoas": 2,
-        "horario": "12:00",
+        "horario": "09:00",
         "mesa": 1
     },
     {
-        "nome-restaurante": "afro",
-        "nome": "leo",
-        "cpf": 83386800202,
-        "data": "06/06/2024",
-        "pessoas": 2,
-        "horario": "12:00",
-        "mesa": 1
-    },
-    {
-        "nome_restaurante": "bambu",
+        "nome_restaurante": "afro",
         "nome": "ana",
-        "cpf": 9097968859,
-        "data": "06/06/2024",
-        "qtd_pessoas": 2,
-        "horario": "12:00",
-        "mesa": 1
-    },
-    {
-        "nome_restaurante": "bambu",
-        "nome": "leo",
-        "cpf": 509484833040,
-        "data": "06/06/2024",
-        "qtd_pessoas": 3,
-        "horario": "12:00",
-        "mesa": 4
-    },
-    {
-        "nome_restaurante": "bambu",
-        "nome": "julia",
-        "cpf": 29822392849,
-        "data": "06/06/2024",
+        "cpf": 0,
+        "data": "1",
         "qtd_pessoas": 2,
         "horario": "12",
-        "mesa": 0
+        "mesa": 1
+    },
+    {
+        "nome_restaurante": "afro",
+        "nome": "ana",
+        "cpf": 8758710469,
+        "data": "07/06/2024",
+        "qtd_pessoas": 2,
+        "horario": "10",
+        "mesa": 2
+    },
+    {
+        "nome_restaurante": "afro",
+        "nome": "tulio",
+        "cpf": 29223837294,
+        "data": "06/06/2024",
+        "qtd_pessoas": 3,
+        "horario": "12",
+        "mesa": 1
     }
 ]
