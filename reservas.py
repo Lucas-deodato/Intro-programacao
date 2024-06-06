@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime, timedelta
 
 arquivo = os.path.join(os.path.dirname(__file__), "reservas.json")
 
@@ -49,7 +50,10 @@ def reservar(nome_restaurante, nome, cpf, data, qtd_pessoas, horario, mesa):
             reservas.append(nova_reserva)
             with open(arquivo, "w", encoding="utf8") as f:
                 json.dump(reservas, f, indent=4)
-            print("😎 RESERVA CONFIRMADA!")
+            print(
+                "😎 RESERVA CONFIRMADA! \n"
+                f"Restaurante: {nome_restaurante}\nData: {data}\nHorário: {horario}\nMesa: {mesa}\nPessoas: {qtd_pessoas} "
+            )
     except FileNotFoundError:
         print(
             "Arquivo não encontrado. Por favor, crie o arquivo 'reservas.json' primeiro."
@@ -116,13 +120,34 @@ def cancelar_reserva(cpf):
 def verificar_reserva(cpf):
     with open(arquivo, "r", encoding="utf8") as f:
         reservas = json.load(f)
+        reservas_filtradas = [r for r in reservas if r["cpf"] == cpf]
 
-    for r in reservas:
-        if r["cpf"] == cpf:
-            print("--- Dados da reserva ---\n")
-            print(
-                f"Nome: {r['nome']}\nCPF: {r['cpf']}\nData: {r['data']}\nN° de pessoas: {r['qtd_pessoas']}\nHorário: {r['horario']}\nMesa: {r['mesa']}"
-            )
-            break
+        if reservas_filtradas:
+            for r in reservas_filtradas:
+                print("--- Dados da reserva ---\n")
+                print(
+                    f"Nome: {r['nome']}\nCPF: {r['cpf']}\nData: {r['data']}\nN° de pessoas: {r['qtd_pessoas']}\nHorário: {r['horario']}\nMesa: {r['mesa']}"
+                )
         else:
             print("Reserva não encontrada.")
+
+
+def reservas_proximas():
+    with open(arquivo, "r", encoding="utf8") as f:
+        reservas = json.load(f)
+        hoje = datetime.now().date()
+        amanha = hoje + timedelta(days=1)
+        hora_atual = datetime.now().time()
+
+        reservas_filtradas = []
+        for reserva in reservas:
+            reserva_data = datetime.strptime(reserva["data"], "%d/%m/%Y").date()
+            reserva_horario = datetime.strptime(reserva["horario"], "%H:%M").time()
+
+            if (reserva_data >= hoje and reserva_data <= amanha) and (
+                reserva_horario.hour == hora_atual.hour
+                and reserva_horario.minute == hora_atual.minute
+            ):
+                reservas_filtradas.append(reserva)
+
+        return reservas_filtradas

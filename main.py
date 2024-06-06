@@ -197,6 +197,20 @@ def administra_opcoes_menu_restaurante():
             print("😡 OPÇÃO INVÁLIDA. TENTE NOVAMENTE!")
 
 
+def verificar_e_notificar_reservas():
+    reservas_proximas = reservas.reservas_proximas()
+
+    if reservas_proximas:
+        print("Reservas próximas:")
+        for reserva in reservas_proximas:
+            print(
+                "Você tem reservas próximas: \n"
+                f"Restaurante: {reserva['nome_restaurante']}, Data: {reserva['data']}, Horário: {reserva['horario']}"
+            )
+    else:
+        print("Não há reservas próximas.")
+
+
 def main():
     """
     Main function to run the application.
@@ -226,4 +240,5 @@ def main():
 
 
 if __name__ == "__main__":
+    verificar_e_notificar_reservas()
     main()

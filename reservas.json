@@ -1,20 +1,11 @@
 [
     {
-        "nome_restaurante": "coco bambu",
-        "nome": "Ana Torchia",
-        "cpf": 8758710469,
-        "data": "09:00",
-        "pessoas": 2,
-        "horario": "09:00",
-        "mesa": 1
-    },
-    {
         "nome_restaurante": "afro",
         "nome": "ana",
         "cpf": 0,
-        "data": "1",
+        "data": "10/06/2024",
         "qtd_pessoas": 2,
-        "horario": "12",
+        "horario": "12:00",
         "mesa": 1
     },
     {
@@ -23,7 +14,7 @@
         "cpf": 8758710469,
         "data": "07/06/2024",
         "qtd_pessoas": 2,
-        "horario": "10",
+        "horario": "10:00",
         "mesa": 2
     },
     {
@@ -32,7 +23,7 @@
         "cpf": 29223837294,
         "data": "06/06/2024",
         "qtd_pessoas": 3,
-        "horario": "12",
+        "horario": "12:00",
         "mesa": 1
     },
     {
@@ -43,5 +34,14 @@
         "qtd_pessoas": 4,
         "horario": "21:30",
         "mesa": 3
+    },
+    {
+        "nome_restaurante": "afro",
+        "nome": "miro",
+        "cpf": 38742837234,
+        "data": "06/06/2024",
+        "qtd_pessoas": 7,
+        "horario": "22:00",
+        "mesa": 8
     }
 ]
