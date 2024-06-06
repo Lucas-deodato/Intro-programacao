@@ -26,8 +26,6 @@ def verifica_conflitos(reservas, nova_reserva):
     """
 
     for reserva_existente in reservas:
-        # Use.get() para acessar valores de dicionário e
-        # fornecer um valor padrão caso a chave não exista
         conflito = (
             (
                 nova_reserva.get("nome_restaurante")
