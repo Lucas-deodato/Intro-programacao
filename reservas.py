@@ -1,14 +1,33 @@
+"""
+This module manages restaurant reservations, 
+    including creating, reading, updating, and deleting reservations.
+    It interacts with a JSON file named 'reservas.json' to store reservation data.
+"""
+
 import json
 import os
-from datetime import datetime, timedelta
+from datetime import datetime
 
 arquivo = os.path.join(os.path.dirname(__file__), "reservas.json")
 
 
 # Função auxiliar para verificar conflitos
 def verifica_conflitos(reservas, nova_reserva):
+    """
+    Verifica se uma nova reserva possui conflitos com reservas existentes.
+
+    Parameters:
+    - reservas (list): Uma lista de dicionários representando reservas existentes.
+    - nova_reserva (dict): Um dicionário representando a nova reserva a ser verificada.
+
+    Returns:
+    - bool: Retorna True se houver conflito(s), indicando que a nova reserva não pode ser feita.
+            Retorna False caso contrário, indicando que a nova reserva é válida.
+    """
+
     for reserva_existente in reservas:
-        # Use.get() para acessar valores de dicionário e fornecer um valor padrão caso a chave não exista
+        # Use.get() para acessar valores de dicionário e
+        # fornecer um valor padrão caso a chave não exista
         conflito = (
             (
                 nova_reserva.get("nome_restaurante")
@@ -27,6 +46,23 @@ def verifica_conflitos(reservas, nova_reserva):
 
 # CREATE: CRIAR RESERVA
 def reservar(nome_restaurante, nome, cpf, data, qtd_pessoas, horario, mesa):
+    """
+    Reserva um lugar no restaurante especificado para o número de pessoas indicado,
+    no dia e horário solicitado.
+
+    Parameters:
+    - nome_restaurante (str): Nome do restaurante onde a reserva será feita.
+    - nome (str): Nome do cliente fazendo a reserva.
+    - cpf (str): CPF do cliente fazendo a reserva.
+    - data (str): Data desejada para a reserva (dd/mm/yyyy).
+    - qtd_pessoas (int): Quantidade de pessoas para a reserva.
+    - horario (str): Horário desejado para a reserva (HH:MM).
+    - mesa (int): Número da mesa preferencial para a reserva.
+
+    Returns:
+    None
+    """
+
     try:
         with open(arquivo, "r", encoding="utf8") as f:
             reservas = json.load(f)
@@ -62,6 +98,15 @@ def reservar(nome_restaurante, nome, cpf, data, qtd_pessoas, horario, mesa):
 
 # READ: LER TODAS AS RESERVAS
 def listar_reservas():
+    """
+    Lists all existing reservations from the 'reservas.json' file.
+
+    This function reads the 'reservas.json' file and prints out each reservation's details,
+    including the restaurant name, date, time, and table number.
+
+    If there are no reservations, it informs the user that all timeslots are available.
+    """
+
     with open(arquivo, "r", encoding="utf8") as f:
         reservas = json.load(f)
 
@@ -81,6 +126,18 @@ def listar_reservas():
 
 # UPDATE: ATUALIZAR O HORÁRIO DA RESERVA
 def atualizar_reserva(cpf, nova_data, novo_horario):
+    """
+    Updates the date and time of a reservation made by a customer identified by their CPF.
+
+    Parameters:
+    - cpf (str): The customer's CPF used to identify the reservation.
+    - nova_data (str): The new date for the reservation in the format dd/mm/yyyy.
+    - novo_horario (str): The new time for the reservation in the format HH:MM.
+
+    Returns:
+    None
+    """
+
     with open(arquivo, "r", encoding="utf8") as f:
         reservas = json.load(f)
 
@@ -100,6 +157,16 @@ def atualizar_reserva(cpf, nova_data, novo_horario):
 
 # DELETE: CANCELAR A RESERVA
 def cancelar_reserva(cpf):
+    """
+    Cancels a reservation associated with the given CPF.
+
+    Parameters:
+    - cpf (str): The CPF of the reservation holder whose reservation is to be canceled.
+
+    Returns:
+    None
+    """
+
     with open(arquivo, "r", encoding="utf8") as f:
         reservas = json.load(f)
 
@@ -118,6 +185,16 @@ def cancelar_reserva(cpf):
 
 # VERIFICAR APENAS A SUA RESERVA
 def verificar_reserva(cpf):
+    """
+    Verifies and displays only the reservations made by the given CPF.
+
+    Parameters:
+    - cpf (str): The CPF of the reservation holder whose reservations are to be verified.
+
+    Returns:
+    None
+    """
+
     with open(arquivo, "r", encoding="utf8") as f:
         reservas = json.load(f)
         reservas_filtradas = [r for r in reservas if r["cpf"] == cpf]
@@ -133,10 +210,19 @@ def verificar_reserva(cpf):
 
 
 def reservas_proximas():
+    """
+    Retrieves and returns the list of reservations scheduled for today or later.
+
+    This function filters the existing reservations based on the current date and time,
+    returning only those that are scheduled for today or future dates.
+
+    Returns:
+        list: A list of dictionaries representing the filtered reservations.
+    """
+
     with open(arquivo, "r", encoding="utf8") as f:
         reservas = json.load(f)
         hoje = datetime.now().date()
-        amanha = hoje + timedelta(days=1)
         hora_atual = datetime.now().time()
 
         reservas_filtradas = []
@@ -144,9 +230,9 @@ def reservas_proximas():
             reserva_data = datetime.strptime(reserva["data"], "%d/%m/%Y").date()
             reserva_horario = datetime.strptime(reserva["horario"], "%H:%M").time()
 
-            if (reserva_data >= hoje and reserva_data <= amanha) and (
-                reserva_horario.hour == hora_atual.hour
-                and reserva_horario.minute == hora_atual.minute
+            if reserva_data >= hoje and (
+                reserva_horario.hour >= hora_atual.hour
+                and reserva_horario.minute >= hora_atual.minute
             ):
                 reservas_filtradas.append(reserva)
 

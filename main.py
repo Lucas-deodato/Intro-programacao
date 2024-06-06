@@ -1,7 +1,7 @@
 """
 This module provides the main functionality for managing restaurant reservations and listings.
 It includes functions for displaying menus, handling user inputs, 
-  and interacting with reservation and restaurant data.
+    and interacting with reservation and restaurant data.
 """
 
 import os
@@ -198,17 +198,27 @@ def administra_opcoes_menu_restaurante():
 
 
 def verificar_e_notificar_reservas():
+    """
+    Verifies and notifies about upcoming reservations.
+
+    This function retrieves all upcoming reservations, checks if there are any,
+    and then prints out the details of each reservation if there are any.
+    If there are no upcoming reservations, it informs the user accordingly.
+    """
+
     reservas_proximas = reservas.reservas_proximas()
 
+    print(Cor.CIANO + "=" * 55 + Cor.RESET)
+    print("\nLEMBRETE DE RESERVAS\n")
     if reservas_proximas:
-        print("Reservas próximas:")
+        print(f"Você tem {len(reservas_proximas)} reserva(s) próxima(s): \n")
         for reserva in reservas_proximas:
             print(
-                "Você tem reservas próximas: \n"
                 f"Restaurante: {reserva['nome_restaurante']}, Data: {reserva['data']}, Horário: {reserva['horario']}"
             )
     else:
         print("Não há reservas próximas.")
+    print(Cor.CIANO + "=" * 55 + Cor.RESET)
 
 
 def main():
