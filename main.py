@@ -60,13 +60,13 @@ def main():
                     opcao_main = input("ESCOLHA UMA OPÇÃO: ")
 
                     if opcao_main == "1":
-                        nome_restaurante = input("Qual o nome do restaurante? ")
-                        nome = input("Qual o nome do responsável pela reserva? ")
-                        cpf = int(input("Informe o seu CPF: "))
-                        data = input("Qual a data da reserva? ")
-                        qtd_pessoas = int(input("Reserva para quantas pessoas? "))
-                        horario = input("Digite o horário que você deseja: ")
-                        mesa = int(input("Qual o número da mesa que você deseja? "))
+                        nome_restaurante = input("Nome completo do restaurante: ")
+                        nome = input("Nome e sobrenome do responsável pela reserva: ")
+                        cpf = int(input("Informe o seu CPF (formato: XXXXXXXXXXX): "))
+                        data = input("Data da reserva (formato: DD-MM-AAAA): ")
+                        qtd_pessoas = int(input("Reserva para quantas pessoas (somente número)? "))
+                        horario = input("Digite o horário que você deseja (formato: XXh - YYh): ")
+                        mesa = int(input("Número da mesa que você deseja (mesas: 0 - 20): "))
 
                         reservas.reservar(nome_restaurante, nome, cpf, data, qtd_pessoas, horario, mesa)
                 
@@ -75,8 +75,8 @@ def main():
 
                     elif opcao_main == "3":
                         cpf = int(input("Informe o CPF cadastrado na reserva: "))
-                        nova_data = input("Digite a nova data: ")
-                        novo_horario = input("Digite o novo horário: ")
+                        nova_data = input("Digite a nova data (formato: DD-MM-AAAA): ")
+                        novo_horario = input("Digite o novo horário(formato: XXh - YYh): ")
                         reservas.atualizar_reserva(cpf, nova_data, novo_horario)
 
                     elif opcao_main == "4":
@@ -100,10 +100,10 @@ def main():
                     opcao_main = input("ESCOLHA UMA OPÇÃO: ")
 
                     if opcao_main == "1":
-                        nome = input("Qual o nome do restaurante? ")
+                        nome = input("Digite o nome completo do restaurante: ")
                         informacoes = input("Digite informações sobre o tipo de cardápio do restaurante (Churrascaria, comida japonesa etc): ")
-                        endereco = input("Qual o endereço? ")
-                        funcionamento = input("Qual o horário de funcionamento? ")
+                        endereco = input("Digite o endereço (rua, número, bairro, CEP): ")
+                        funcionamento = input("Digite o horário de funcionamento: ")
                         avaliacao = int(input("Digite a avaliação do restaurante (0-5): "))
 
                         restaurantes.adicionar_restaurante(nome, endereco, informacoes, funcionamento, avaliacao)
@@ -112,10 +112,10 @@ def main():
                         restaurantes.listar_restaurantes()
 
                     elif opcao_main == "3":
-                        nome_atual = input('Digite o nome do restaurante que você deseja atualizar: ')
+                        nome_atual = input('Digite o nome completo do restaurante que você deseja atualizar: ')
                         print("Caso você não deseje atualizar um campo qualquer, por exemplo o nome, apenas repita o nome já existente, e assim sucessivamente.\n")
 
-                        novo_nome = input("Qual o novo nome do restaurante? ")
+                        novo_nome = input("Digite o novo nome completo do restaurante: ")
                         novas_informacoes = input("Novas informações: ")
                         novo_endereco = input("Qual o novo endereço? ")
                         novo_funcionamento = input("Qual o novo horário de funcionamento? ")
