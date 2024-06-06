@@ -61,5 +61,12 @@
         "informacoes": "Restaurante de sushi",
         "funcionamento": "11h - 15h e 17h - 23h",
         "avaliacao": 4
+    },
+    {
+        "nome": "Mal\u00edciaDel\u00edcia",
+        "endereco": "Paulista - PE",
+        "informacoes": "Culin\u00e1ria mediter\u00e2nea, mexicana e indiana.",
+        "funcionamento": "18:00 \u00e0s 00:00",
+        "avaliacao": 5
     }
 ]

@@ -121,7 +121,7 @@ def verificar_reserva(cpf):
         if r["cpf"] == cpf:
             print("--- Dados da reserva ---\n")
             print(
-                f"Nome: {r['nome']}\nCPF: {r['cpf']}\nData: {r['data']}\nN° de pessoas: {r['pessoas']}\nHorário: {r['horario']}\nMesa: {r['mesa']}"
+                f"Nome: {r['nome']}\nCPF: {r['cpf']}\nData: {r['data']}\nN° de pessoas: {r['qtd_pessoas']}\nHorário: {r['horario']}\nMesa: {r['mesa']}"
             )
             break
         else:
