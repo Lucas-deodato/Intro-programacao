@@ -8,7 +8,6 @@ arquivo = os.path.join(os.path.dirname(__file__), "reservas.json")
 # Função auxiliar para verificar conflitos
 def verifica_conflitos(reservas, nova_reserva):
     for reserva_existente in reservas:
-        # Use.get() para acessar valores de dicionário e fornecer um valor padrão caso a chave não exista
         conflito = (
             (
                 nova_reserva.get("nome_restaurante")

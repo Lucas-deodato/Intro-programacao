@@ -1,9 +1,3 @@
-"""
-This module provides the main functionality for managing restaurant reservations and listings.
-It includes functions for displaying menus, handling user inputs, 
-  and interacting with reservation and restaurant data.
-"""
-
 import os
 from time import sleep
 import reservas
@@ -16,13 +10,6 @@ arquivo = os.path.join(os.path.dirname(__file__), "reservas.json")
 
 
 def menu_inicial():
-    """
-    Displays the initial menu options to the user.
-
-    This function prints the initial menu options available to the user,
-    allowing them to select an option to proceed further.
-    """
-
     print(Cor.CIANO + "=" * 55 + Cor.RESET)
     print("          1 - MENU DE RESERVAS")
     print("          2 - MENU DE RESTAURANTES")
@@ -31,13 +18,6 @@ def menu_inicial():
 
 
 def menu_reservas():
-    """
-    Displays the reservation menu options to the user.
-
-    This function prints the reservation menu options available to the user,
-    allowing them to select an option to proceed further.
-    """
-
     print(Cor.CIANO + "=" * 55 + Cor.RESET)
     print("\n[MENU DE RESERVAS]\n")
     print("1. FAZER RESERVA")
@@ -50,13 +30,6 @@ def menu_reservas():
 
 
 def menu_restaurantes():
-    """
-    Displays the restaurants menu options to the user.
-
-    This function prints the restaurants menu options available to the user,
-    allowing them to select an option to proceed further.
-    """
-
     print(Cor.CIANO + "=" * 55 + Cor.RESET)
     print("\n[MENU DE RESERVAS]\n")
     print("1. ADICIONAR RESTAURANTE")
@@ -68,17 +41,6 @@ def menu_restaurantes():
 
 
 def administra_opcoes_menu_reserva():
-    """
-    Handles the reservation options by presenting the user with a menu
-      and performing actions based on their choice.
-
-    This function continuously displays the reservation menu
-      until the user chooses to return to the previous menu.
-    It allows users to make a reservation, list reservations,
-      update reservation details, cancel a reservation,
-      verify a reservation, or return to the previous menu.
-    """
-
     while True:
         menu_reservas()
         opcao_main = int(input("ESCOLHA UMA OPÇÃO: "))
@@ -128,17 +90,6 @@ def administra_opcoes_menu_reserva():
 
 
 def administra_opcoes_menu_restaurante():
-    """
-    Handles the restaurant options by presenting the user with a menu
-    and performing actions based on their choice.
-
-    This function continuously displays the restaurant menu
-    until the user chooses to return to the previous menu.
-    It allows users to add a restaurant, list restaurants,
-    update restaurant information, delete a restaurant,
-    or return to the previous menu.
-    """
-
     while True:
         menu_restaurantes()
         opcao_main = input("ESCOLHA UMA OPÇÃO: ")
@@ -212,14 +163,6 @@ def verificar_e_notificar_reservas():
 
 
 def main():
-    """
-    Main function to run the application.
-
-    This function displays the initial menu to the user and processes their choice.
-    It handles all the core logic of the application, including displaying menus,
-    processing user inputs, and calling appropriate functions based on the user's choices.
-    """
-
     while True:
         menu_inicial()
         primeiro_menu = int(input("INFORME UMA OPÇÃO: \n"))
