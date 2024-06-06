@@ -1,9 +1,3 @@
-"""
-This module manages restaurant reservations, 
-    including creating, reading, updating, and deleting reservations.
-    It interacts with a JSON file named 'reservas.json' to store reservation data.
-"""
-
 import json
 import os
 from datetime import datetime
@@ -97,12 +91,12 @@ def reservar(nome_restaurante, nome, cpf, data, qtd_pessoas, horario, mesa):
 # READ: LER TODAS AS RESERVAS
 def listar_reservas():
     """
-    Lists all existing reservations from the 'reservas.json' file.
+    Lista todas as reservas existentes do arquivo 'reservas.json'.
 
-    This function reads the 'reservas.json' file and prints out each reservation's details,
-    including the restaurant name, date, time, and table number.
+    Esta função lê o arquivo 'reservas.json' e imprime os detalhes de cada reserva,
+    incluindo o nome do restaurante, a data, a hora e o número da tabela.
 
-    If there are no reservations, it informs the user that all timeslots are available.
+    Se não houver reservas, ele informará ao usuário que todos os horários estão disponíveis.
     """
 
     with open(arquivo, "r", encoding="utf8") as f:
@@ -125,12 +119,12 @@ def listar_reservas():
 # UPDATE: ATUALIZAR O HORÁRIO DA RESERVA
 def atualizar_reserva(cpf, nova_data, novo_horario):
     """
-    Updates the date and time of a reservation made by a customer identified by their CPF.
+    Atualiza a data e a hora de uma reserva feita por um cliente identificado pelo seu CPF.
 
     Parameters:
-    - cpf (str): The customer's CPF used to identify the reservation.
-    - nova_data (str): The new date for the reservation in the format dd/mm/yyyy.
-    - novo_horario (str): The new time for the reservation in the format HH:MM.
+    - cpf (str): o CPF do cliente usado para identificar a reserva.
+    - nova_data (str): a nova data para a reserva no formato dd/mm/yyyy
+    - novo_horario (str): o novo horário para a reserva no formato hh:mm.
 
     Returns:
     None
@@ -156,10 +150,10 @@ def atualizar_reserva(cpf, nova_data, novo_horario):
 # DELETE: CANCELAR A RESERVA
 def cancelar_reserva(cpf):
     """
-    Cancels a reservation associated with the given CPF.
+    Cancela uma reserva associada ao cpf informado.
 
     Parameters:
-    - cpf (str): The CPF of the reservation holder whose reservation is to be canceled.
+    - cpf (str): o CPF do usuario que consta na reserva que deseja-se cancelar.
 
     Returns:
     None
@@ -184,13 +178,13 @@ def cancelar_reserva(cpf):
 # VERIFICAR APENAS A SUA RESERVA
 def verificar_reserva(cpf):
     """
-    Verifies and displays only the reservations made by the given CPF.
+    Verifica e exibe apenas as reservas feitas pelo CPF fornecido.
 
     Parameters:
-    - cpf (str): The CPF of the reservation holder whose reservations are to be verified.
+    - cpf (str): O CPF do usuário titular das reservas que deseja-se verificar
 
     Returns:
-    None
+        None
     """
 
     with open(arquivo, "r", encoding="utf8") as f:
@@ -209,13 +203,13 @@ def verificar_reserva(cpf):
 
 def reservas_proximas():
     """
-    Retrieves and returns the list of reservations scheduled for today or later.
+    Recupera e retorna a lista de reservas agendadas para hoje ou mais tarde.
 
-    This function filters the existing reservations based on the current date and time,
-    returning only those that are scheduled for today or future dates.
+    Esta função filtra as reservas existentes com base na data e hora atuais,
+    retornando apenas aqueles que estão agendados para datas de hoje ou futuras.
 
     Returns:
-        list: A list of dictionaries representing the filtered reservations.
+        list: Uma lista de dicionários que representam as reservas filtradas.
     """
 
     with open(arquivo, "r", encoding="utf8") as f:
