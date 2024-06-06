@@ -7,5 +7,50 @@
         "pessoas": 8,
         "horario": "17h - 20h",
         "mesa": 8
+    },
+    {
+        "nome-restaurante": "afro",
+        "nome": "ana",
+        "cpf": 8758710469,
+        "data": "06/06/2024",
+        "pessoas": 2,
+        "horario": "12:00",
+        "mesa": 1
+    },
+    {
+        "nome-restaurante": "afro",
+        "nome": "leo",
+        "cpf": 83386800202,
+        "data": "06/06/2024",
+        "pessoas": 2,
+        "horario": "12:00",
+        "mesa": 1
+    },
+    {
+        "nome_restaurante": "bambu",
+        "nome": "ana",
+        "cpf": 9097968859,
+        "data": "06/06/2024",
+        "qtd_pessoas": 2,
+        "horario": "12:00",
+        "mesa": 1
+    },
+    {
+        "nome_restaurante": "bambu",
+        "nome": "leo",
+        "cpf": 509484833040,
+        "data": "06/06/2024",
+        "qtd_pessoas": 3,
+        "horario": "12:00",
+        "mesa": 4
+    },
+    {
+        "nome_restaurante": "bambu",
+        "nome": "julia",
+        "cpf": 29822392849,
+        "data": "06/06/2024",
+        "qtd_pessoas": 2,
+        "horario": "12",
+        "mesa": 0
     }
 ]
